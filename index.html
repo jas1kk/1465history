@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Основание Казахского ханства — 1465</title>
+  <style>
+    /* Reset */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;line-height:1.5;color:#111;background:linear-gradient(180deg,#f7f9fc,#eef6f9)}
+
+    /* Layout */
+    .container{max-width:1100px;margin:30px auto;padding:24px}
+    header{position:relative;overflow:hidden;border-radius:14px;box-shadow:0 10px 30px rgba(12,24,40,0.08)}
+    .hero{display:grid;grid-template-columns:1fr;gap:20px;padding:48px;background:linear-gradient(180deg,rgba(6,22,41,0.88),rgba(6,22,41,0.6)),url('https://upload.wikimedia.org/wikipedia/commons/9/9f/Map_of_Kazakh_khanate_%28english%29.png') center/cover no-repeat;color:#fff}
+    .hero .title{font-size:clamp(26px,4vw,44px);font-weight:700;letter-spacing:-0.02em; animation: slideInFromLeft 1s ease-out 0.2s forwards; opacity: 0;} /* Анимация */
+    .hero p{margin-top:12px;max-width:65ch;opacity:0.95; animation: slideInFromLeft 1s ease-out 0.4s forwards; opacity: 0;} /* Анимация */
+    .cta{margin-top:18px; animation: slideInFromLeft 1s ease-out 0.6s forwards; opacity: 0;} /* Анимация */
+    .btn{display:inline-block;padding:10px 16px;border-radius:10px;background:linear-gradient(90deg,#ffb86b,#ff7a7a);color:#111;font-weight:600;text-decoration:none;box-shadow:0 6px 18px rgba(255,122,122,0.18);transform:translateY(0);transition:transform .22s ease}
+    .btn:hover{transform:translateY(-3px)}
+    .hero .card { animation: slideInFromRight 1s ease-out 0.2s forwards; opacity: 0; } /* Анимация */
+
+    /* Floating ornaments */
+    .orb{position:absolute;border-radius:50%;filter:blur(28px);opacity:.28}
+    .orb.one{width:260px;height:260px;right:-60px;top:-40px;background:#ffb86b}
+    .orb.two{width:130px;height:130px;left:-40px;bottom:-40px;background:#7ad0ff}
+
+    /* Sections */
+    section{margin-top:26px;background:#fff;border-radius:12px;padding:20px;box-shadow:0 8px 24px rgba(12,24,40,0.06)}
+    h2{font-size:20px;margin-bottom:12px;color:#062030}
+    .lead{color:#334556}
+
+    /* Timeline */
+    .timeline{position:relative;padding-left:22px}
+    .timeline::before{content:'';position:absolute;left:8px;top:10px;bottom:10px;width:3px;background:linear-gradient(180deg,#ffd7a8,#a8e7ff);border-radius:6px}
+    .item{position:relative;padding:18px 14px;margin:14px 0;border-radius:10px;transition:transform .35s ease, box-shadow .35s ease}
+    .item:hover{transform:translateX(8px);box-shadow:0 10px 28px rgba(6,22,41,0.06)}
+    .dot{position:absolute;left:-4px;top:26px;width:14px;height:14px;border-radius:50%;background:#062030;border:3px solid #fff;box-shadow:0 3px 10px rgba(2,6,12,0.18)}
+    .item .year{font-weight:700;color:#0b3a52}
+    .item p{margin-top:6px;color:#3b5568}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+    .photo{position:relative;border-radius:10px;overflow:hidden;cursor:pointer}
+    .photo img{width:100%;height:140px;object-fit:cover;display:block;transition:transform .4s ease}
+    .photo:hover img{transform:scale(1.08)}
+    .caption{position:absolute;left:8px;bottom:8px;background:rgba(0,0,0,0.42);backdrop-filter:blur(4px);padding:6px 8px;border-radius:8px;color:#fff;font-size:13px}
+
+    /* Modal */
+    .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(2,6,12,0.6);opacity:0;pointer-events:none;transition:opacity .22s ease}
+    .modal.open{opacity:1;pointer-events:auto}
+    .modal .modal-inner{max-width:90%;max-height:86%;background:#fff;border-radius:10px;padding:12px;overflow:auto}
+    .modal img{max-width:100%;height:auto;border-radius:8px;display:block}
+
+    /* Key figures */
+    .people{display:flex;gap:12px;flex-wrap:wrap}
+    .person{flex:1 1 220px;background:linear-gradient(180deg,#fff,#fbfbff);padding:12px;border-radius:10px;display:flex;gap:12px;align-items:center}
+    .person img{width:68px;height:68px;border-radius:10px;object-fit:cover}
+    .person .meta{font-size:14px}
+    .person .meta strong{display:block}
+
+    /* Small footer */
+    footer{margin-top:18px;text-align:center;color:#6b7f8f;font-size:14px}
+
+    /* Animations (scroll reveals) */
+    @keyframes slideInFromLeft { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes slideInFromRight { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+
+    .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease}
+    /* Усиленный эффект для элементов таймлайна */
+    .item.reveal{ transition: opacity .6s ease, transform .6s ease; transition-delay: calc(var(--order) * 0.1s); }
+    .reveal.visible{opacity:1;transform:none}
+
+    @media (min-width:760px){
+      .hero{grid-template-columns:1fr 380px;align-items:center}
+      .hero .card{background:rgba(255,255,255,0.06);padding:18px;border-radius:12px}
+      .photo img{height:160px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="hero">
+        <div>
+          <div class="title">Основание Казахского ханства — 1465</div>
+          <p>В 1465 году племенные вожди Керей и Жанибек отделились от государства Джучи и основали независимое Казахское ханство — одно из ключевых событий в истории казахского народа. На сайте — краткая хроника, ключевые фигуры и галерея иллюстраций.</p>
+          <div class="cta"><a class="btn" href="#timeline">Читать хронику</a></div>
+        </div>
+        <div class="card" aria-hidden="true">
+          <div style="position:relative; height:220px; border-radius:10px; overflow:hidden;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Map_of_the_Kazakh_Khanate.png" alt="map" style="width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.06);filter:contrast(.95)" />
+            <div style="position:absolute;left:14px;bottom:12px;background:rgba(255,255,255,0.88);padding:8px 10px;border-radius:8px;font-weight:700;color:#0b2b3a;font-size:14px">Карта миграций</div>
+          </div>
+          <div style="padding-top:12px;color:#eef6f9">
+            <small style="color:#d9f3ff">Коротко:</small>
+            <p style="color:#fff;margin-top:8px">Переломный момент, который передает власть от Золотой Орды к самостоятельным казахским ханам.</p>
+          </div>
+        </div>
+        <span class="orb one"></span>
+        <span class="orb two"></span>
+      </div>
+    </header>
+
+    <section id="timeline" class="reveal">
+      <h2>Хроника событий</h2>
+      <div class="timeline">
+        <article class="item reveal" style="--order: 1;">
+          <span class="dot"></span>
+          <div class="year">1465 — Образование</div>
+          <p>Керей и Жанибек, покинувшие узбекское правление хана Абулхаира, объединяют кочевые племена, образовав новое ханство на территории Западного Жетысу, в поймах рек Чу и Талас, что стало основой будущей казахской нации.</p>
+        </article>
+        <article class="item reveal" style="--order: 2;">
+          <span class="dot"></span>
+          <div class="year">70-е годы XV века — Расширение и борьба за города</div>
+          <p>Казахские ханы развернули активную борьбу с наследниками Абулхаира, в частности с Мухаммедом Шайбани, за присырдарьинские города (Сыгнак, Сауран, Сузак, Ясы/Туркестан), которые имели ключевое экономическое и стратегическое значение. К концу XV в. часть присырдарьинских оазисов вошла в состав Казахского ханства.</p>
+        </article>
+        <article class="item reveal" style="--order: 3;">
+          <span class="dot"></span>
+          <div class="year">Конец XV — XVI века — Формирование жузов и возрождение при Хак-Назаре</div>
+          <p>Казахские орды укрепляют позиции в Центральной Азии. При хане Хак-Назаре (сыне Касыма) произошло возрождение и объединение казахов в единое ханство, а также ослабление Ногайской Орды. В этот период формируются три жуза: Старший, Средний и Младший.</p>
+        </article>
+        <article class="item reveal" style="--order: 4;">
+          <span class="dot"></span>
+          <div class="year">Конец XVI — XVII века — Хан Тауекел и Есим</div>
+          <p>Продолжается борьба за Ташкент и Туркестан. Хан Тауекел совершает походы в Северную Бухару, а позднее хан **Есим** окончательно овладел присырдарьинскими городами, включая Ташкент, вернув их после поражения противника.</p>
+        </article>
+        <article class="item reveal" style="--order: 5;">
+          <span class="dot"></span>
+          <div class="year">Последствия</div>
+          <p>Образование ханства ускорило этногенез и развитие политической самостоятельности казахского народа, передав власть от Золотой Орды к самостоятельным казахским ханам.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <h2>Ключевые фигуры</h2>
+      <div class="people">
+        <div class="person">
+          <img src="https://avatars.mds.yandex.net/i?id=3ce7812601458463b1a8e3a2655ae1702a1884b8-5234922-images-thumbs&n=13" alt="Керей" />
+          <div class="meta"><strong>Керей хан</strong><small>Один из основателей ханства</small></div>
+        </div>
+        <div class="person">
+          <img src="https://danaqaz.kz/media/k2/items/cache/873514e130e46a244b5aae0b135db01f_XL.jpg" alt="Жанибек" />
+          <div class="meta"><strong>Жанибек хан</strong><small>Соратник Керея, соучредитель</small></div>
+        </div>
+        <div class="person">
+          <img src="https://e-history.kz/storage/tmp/resize/preview/1200_0_9150e7cdf4c2fc00a10702ea39f979ff.jpg" alt="Хак-Назар" />
+          <div class="meta"><strong>Хак-Назар хан</strong><small>Объединитель и укрепитель</small></div>
+        </div>
+        <div class="person">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAaGazhrCNZ2oqRE-hXcSjyLLdkUjxNLcRfg&s" alt="Тауекел" />
+          <div class="meta"><strong>Тауекел хан</strong><small>Активно боролся с Шайбанидами</small></div>
+        </div>
+        <div class="person">
+          <img src="https://qazaqadebieti.kz/wp-content/uploads/2021/06/Esim-han-vvv-246x300.jpg" alt="Есим" />
+          <div class="meta"><strong>Есим хан</strong><small>Окончательно овладел Ташкентом</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <h2>Галерея (клик — увеличить)</h2>
+      <div class="gallery" id="gallery">
+        <div class="photo" data-src=""><img src="https://lh3.googleusercontent.com/proxy/xE4zlTq8FoQSxfuECGeIsVTfUAuCk0n5E9BSK_fcsSB1iPkWZjqdSQS2xta-fTnkAa0eTcF_uv6G-2SKiGU7LpOemg" alt="Хан Керей и Хан Жанибек"><div class="caption">Хан Керей и Хан Жанибек</div></div>
+        <div class="photo" data-src=""><img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/%D0%9D%D0%B0%D0%B1%D0%B5%D0%B3_%D0%BA%D0%B0%D0%B7%D0%B0%D0%BA%D0%BE%D0%B2_%D0%BD%D0%B0_%D0%BF%D0%BE%D1%81%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D1%82%D1%83%D0%B7%D0%B5%D0%BC%D1%86%D0%B5%D0%B2.png" alt="Сцена битвы"><div class="caption">Сцена битвы за города</div></div>
+        <div class="photo" data-src=""><img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Kazakh_Yurts.jpg" alt="Кочевая юрта"><div class="caption">Кочевая юрта</div></div>
+        <div class="photo" data-src=""><img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Map_of_Kazakh_khanate_%28english%29.png" alt="Карта миграций"><div class="caption">Историческая карта региона</div></div>
+        <div class="photo" data-src=""><img src="https://static.wikia.nocookie.net/warrior/images/8/87/01-14.jpg/revision/latest/scale-to-width-down/1120?cb=20130713153318&path-prefix=ru" alt="Казахские воины"><div class="caption">Казахские воины XV века</div></div>
+        <div class="photo" data-src=""><img src="https://assembly.kz/upload/medialibrary/390/390b83ffea382eb03efc496173fc424b.jpg" alt="Степь"><div class="caption">Пейзаж Великой степи</div></div>
+      </div>
+    </section>
+  </div>
+
+  <div id="modal" class="modal" role="dialog" aria-hidden="true">
+    <div class="modal-inner">
+      <img id="modal-img" src="" alt="">
+    </div>
+  </div>
+
+  <script>
+    // Simple reveal on scroll with staggered effect for timeline
+    const reveals = document.querySelectorAll('.reveal');
+    const onScroll = () =>{
+      const trigger = window.innerHeight * 0.86;
+      reveals.forEach(el=>{
+        const r = el.getBoundingClientRect();
+        if(r.top < trigger) el.classList.add('visible');
+      })
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+
+    // Gallery lightbox
+    const gallery = document.getElementById('gallery');
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+
+    gallery.addEventListener('click', e=>{
+      const photo = e.target.closest('.photo');
+      if(!photo) return;
+      // Используем data-src для большого изображения, img.src для превью
+      const src = photo.dataset.src || photo.querySelector('img').src; 
+      modalImg.src = src;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+    });
+
+    modal.addEventListener('click', e=>{
+      if(e.target === modal || e.target === modalImg){
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden','true');
+        modalImg.src = '';
+      }
+    });
+
+    // Keyboard escape
+    document.addEventListener('keydown', e=>{
+      if(e.key === 'Escape' && modal.classList.contains('open')){
+        modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); modalImg.src = '';
+      }
+    });
+
+    // Smooth anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const target = document.querySelector(a.getAttribute('href'));
+        if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth',block:'start'}); }
+      })
+    });
+  </script>
+</body>
+</html>
